@@ -14,8 +14,12 @@ class App {
         computerArr.push(number);
       }
     }
-    
-    /**3. */
+
+    /**3. 사용자에게 숫자 입력 받기*/
+    Console.readLine(GUIDE_MESSAGE.INPUTNUMBER, (input) => {
+      // 비교한 결과값 출력);
+    });
+
   
 
 
