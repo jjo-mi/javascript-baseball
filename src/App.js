@@ -27,6 +27,9 @@ class App {
     /** 3. 사용자에게 숫자 입력 받기*/
     Console.readLine('숫자를 입력해주세요 : ', (input) => {
       let userArr = input.split("").map(Number);
+      if(input.length > 3) {
+        throw new Error('1 ~ 9까지의 숫자만 입력해주세요.');
+      }
       console.log(userArr);
       this.compareInput(computerArr, userArr);
       this.showResult(ballCount, strikeCount);
