@@ -44,6 +44,21 @@ class App {
     }
     };
 
+  /** 5. 비교결과 출력해주기 */
+  showResult(ballCount, strikeCount) {
+    let result = "";
+    if(this.ballCount > 0) {
+      result += (`${this.ballCount}볼 `);
+    } 
+    if(this.strikeCount > 0) {
+      result += (`${this.strikeCount}스트라이크`);
+    } 
+    if(result === "") {
+      result += '낫싱';
+    }
+    Console.print(result);
+  }
+
 }
 
 
