@@ -17,11 +17,20 @@ class App {
   /** 3. 사용자 입력값 받기 */
   inputNumber() {
     Console.readLine(GUIDE_MESSAGE.INPUT_NUMBER, (numbers) => {
-      console.log('###', typeof numbers);
+      const userArr = numbers.split("").map(arg => Number(arg));
+      this.vaildInput(userArr);
       //유효성 검토
     });
-
+  } 
+  
+  /** 4. 입력값 유효성 검토 */
+  vaildInput(userArr) {
+    let x = new Set(userArr);
+    if(userArr < 1 || userArr > 9 || userArr.length !== x.size) {
+      throw new Error(ERROR_MEASSAGE.NUMBER);
+    }
   }
+
 }
 
 
