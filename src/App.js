@@ -1,8 +1,15 @@
 const { Console, Random } = require("@woowacourse/mission-utils");
 const { GUIDE_MESSAGE, RESULT_KEY, ERROR_MEASSAGE } = require("./Constant");
-
+const { validInput } = require("./ValidationUtils")
 
 class App {
+  strike;
+  ball;
+  constructor() {
+    this.strike = 0;
+    this.ball = 0;
+
+  }
   play() {
     Console.print("숫자 야구 게임을 시작합니다.")
     this.creatComputerNumbers();
@@ -18,16 +25,18 @@ class App {
   inputNumber() {
     Console.readLine(GUIDE_MESSAGE.INPUT_NUMBER, (numbers) => {
       const userArr = numbers.split("").map(arg => Number(arg));
-      this.vaildInput(userArr);
-      //유효성 검토
+      validInput(userArr);
     });
   } 
   
-  /** 4. 입력값 유효성 검토 */
-  vaildInput(userArr) {
-    let x = new Set(userArr);
-    if(userArr < 1 || userArr > 9 || userArr.length !== x.size) {
-      throw new Error(ERROR_MEASSAGE.NUMBER);
+  /** 5. 컴퓨터와 입력값 비교  */
+  compareNumber(computerArr, userArr) {
+    for(let i = 0; i < computerArr.length; i++) {
+      if(computerArr[i] == userArr[i]) {
+        this.strike++;
+      } else if(computerArr.indexOf(userArr[i])) {
+        this.ball++;
+      }
     }
   }
 
